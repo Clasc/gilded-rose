@@ -57,16 +57,16 @@ func (item *Item) process() {
 }
 
 func (item *Item) updateQuality() {
-	if item.Name != AGED_BRIE && item.Name != BACKSTAGE {
-		if item.Quality > 0 {
-			if item.Name != SULFURAS {
-				item.Quality = item.Quality - 1
-			}
-		}
+	if item.Name == AGED_BRIE || item.Name == BACKSTAGE {
+		increaseQuality(item)
 		return
 	}
-	increaseQuality(item)
 
+	if item.Quality > 0 {
+		if item.Name != SULFURAS {
+			item.Quality = item.Quality - 1
+		}
+	}
 }
 func (item *Item) updateSellin() {
 	if item.Name != SULFURAS {
