@@ -11,7 +11,7 @@ func Test_Foo(t *testing.T) {
 		{gildedrose.AGED_BRIE, 0, 0},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.AGED_BRIE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.AGED_BRIE, items[0].Name)
@@ -23,7 +23,7 @@ func TestAgedBrieSellin0Quality0UpdatesToQuality2AndSellinIsDecreasedByOne(t *te
 		{gildedrose.AGED_BRIE, 0, 0},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.AGED_BRIE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.AGED_BRIE, items[0].Name)
@@ -45,7 +45,7 @@ func TestAgedBrieSellin10Quality50UpdatesToQuality50AndSellinIsDecreasedByOne(t 
 		{gildedrose.AGED_BRIE, 10, 50},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.AGED_BRIE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.AGED_BRIE, items[0].Name)
@@ -67,7 +67,7 @@ func TestAgedBrieSellin100Quality40UpdatesToQuality42AndSellinIsDecreasedByOne(t
 		{gildedrose.AGED_BRIE, 100, 40},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.AGED_BRIE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.BACKSTAGE, items[0].Name)
@@ -89,7 +89,7 @@ func TestSulfurasSellin100Quality40UpdatesToQuality42AndSellinDoesNotDecrease(t 
 		{gildedrose.SULFURAS, 100, 40},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.SULFURAS {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.SULFURAS, items[0].Name)
@@ -111,7 +111,7 @@ func TestSulfurasSellin100Quality51UpdatesToQuality51AndSellinDoesNotDecrease(t 
 		{gildedrose.SULFURAS, 100, 51},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.SULFURAS {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.SULFURAS, items[0].Name)
@@ -133,7 +133,7 @@ func TestBackstageSellin100Quality51UpdatesToQuality51AndSellinDecreases(t *test
 		{gildedrose.BACKSTAGE, 100, 51},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.BACKSTAGE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.BACKSTAGE, items[0].Name)
@@ -155,7 +155,7 @@ func TestBackstageSellin100Quality40UpdatesToQuality42AndSellinDecreases(t *test
 		{gildedrose.BACKSTAGE, 100, 40},
 	}
 
-	gildedrose.UpdateQuality(items)
+	gildedrose.UpdateItems(items)
 
 	if items[0].Name != gildedrose.BACKSTAGE {
 		t.Errorf("Name: Expected %s but got %s ", gildedrose.BACKSTAGE, items[0].Name)

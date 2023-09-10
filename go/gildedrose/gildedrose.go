@@ -9,13 +9,49 @@ type Item struct {
 	SellIn, Quality int
 }
 
-func UpdateQuality(items []*Item) {
+type Calculatable interface {
+	getNewQuality() int
+	updateSellin()
+}
+
+type Sulfuras struct {
+	Item
+}
+
+type AgedBrie struct {
+	Item
+}
+
+type Backstage struct {
+	Item
+}
+
+// func calculatable(item *Item) Calculatable {
+// 	switch item.Name {
+// 	case BACKSTAGE:
+// 		{
+// 			return &Backstage{Item: *item}
+// 		}
+// 	case SULFURAS:
+// 		{
+// 			return &Sulfuras{Item: *item}
+// 		}
+// 	case AGED_BRIE:
+// 		{
+// 			return &AgedBrie{Item: *item}
+// 		}
+// 	default:
+// 		return item
+// 	}
+// }
+
+func UpdateItems(items []*Item) {
 	for i := 0; i < len(items); i++ {
-		process(items[i])
+		items[i].process()
 	}
 }
 
-func process(item *Item) {
+func (item *Item) process() {
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE {
 		if item.Quality > 0 {
 			if item.Name != SULFURAS {
