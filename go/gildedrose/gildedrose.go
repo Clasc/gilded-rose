@@ -72,7 +72,7 @@ func (item *Item) updateQuality() {
 	default:
 		{
 			if item.Quality > 0 {
-				item.Quality = item.Quality - 1
+				item.Quality -= 1
 			}
 		}
 	}
