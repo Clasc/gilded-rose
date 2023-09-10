@@ -61,13 +61,15 @@ func (item *Item) updateQuality() {
 		increaseQuality(item)
 		return
 	}
+	if item.Name == SULFURAS {
+		return
+	}
 
 	if item.Quality > 0 {
-		if item.Name != SULFURAS {
-			item.Quality = item.Quality - 1
-		}
+		item.Quality = item.Quality - 1
 	}
 }
+
 func (item *Item) updateSellin() {
 	if item.Name != SULFURAS {
 		item.SellIn = item.SellIn - 1
