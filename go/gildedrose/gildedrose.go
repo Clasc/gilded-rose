@@ -62,21 +62,19 @@ func (item *Item) updateQuality() {
 		return
 	}
 
-	if item.Name == AGED_BRIE {
+	switch item.Name {
+	case AGED_BRIE:
 		item.Quality += 1
-		return
-	}
-
-	if item.Name == BACKSTAGE {
+	case BACKSTAGE:
 		backastageQuality(item)
+	case SULFURAS:
 		return
-	}
-	if item.Name == SULFURAS {
-		return
-	}
-
-	if item.Quality > 0 {
-		item.Quality = item.Quality - 1
+	default:
+		{
+			if item.Quality > 0 {
+				item.Quality = item.Quality - 1
+			}
+		}
 	}
 }
 
