@@ -81,17 +81,25 @@ func (item *Item) updateSellin() {
 	}
 }
 
+func improveBy(item *Item) int {
+	if item.SellIn < 6 {
+		return 3
+	}
+
+	if item.SellIn < 11 {
+		return 2
+	}
+
+	return 1
+}
+
 func backastageQuality(item *Item) {
-	item.Quality += 1
-
-	if item.SellIn < 11 && item.Quality < MAX_QUALITY {
-		item.Quality += 1
-
+	increase := improveBy(item)
+	if item.Quality+increase < MAX_QUALITY {
+		item.Quality += increase
+		return
 	}
-
-	if item.SellIn < 6 && item.Quality < MAX_QUALITY {
-		item.Quality += 1
-	}
+	item.Quality = MAX_QUALITY
 }
 
 func agedBrieQuality(item *Item) {
