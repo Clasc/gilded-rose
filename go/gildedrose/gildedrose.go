@@ -95,11 +95,11 @@ func improveBy(item *Item) int {
 
 func backastageQuality(item *Item) {
 	increase := improveBy(item)
-	if item.Quality+increase < MAX_QUALITY {
-		item.Quality += increase
+	if item.Quality+increase >= MAX_QUALITY {
+		item.Quality = MAX_QUALITY
 		return
 	}
-	item.Quality = MAX_QUALITY
+	item.Quality += increase
 }
 
 func agedBrieQuality(item *Item) {
