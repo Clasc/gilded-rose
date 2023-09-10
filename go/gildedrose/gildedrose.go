@@ -99,16 +99,16 @@ func increaseQuality(item *Item) {
 		return
 	}
 
-	item.Quality += +1
+	item.Quality += 1
 	if item.Name == BACKSTAGE {
 		if item.SellIn < 11 {
 			if item.Quality < 50 {
-				item.Quality += +1
+				item.Quality += 1
 			}
 		}
 		if item.SellIn < 6 {
 			if item.Quality < 50 {
-				item.Quality += +1
+				item.Quality += 1
 			}
 		}
 	}
