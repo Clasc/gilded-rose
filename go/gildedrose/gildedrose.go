@@ -10,25 +10,6 @@ type Item struct {
 	SellIn, Quality int
 }
 
-// func calculatable(item *Item) Calculatable {
-// 	switch item.Name {
-// 	case BACKSTAGE:
-// 		{
-// 			return &Backstage{Item: *item}
-// 		}
-// 	case SULFURAS:
-// 		{
-// 			return &Sulfuras{Item: *item}
-// 		}
-// 	case AGED_BRIE:
-// 		{
-// 			return &AgedBrie{Item: *item}
-// 		}
-// 	default:
-// 		return item
-// 	}
-// }
-
 func UpdateItems(items []*Item) {
 	for i := 0; i < len(items); i++ {
 		items[i].process()
