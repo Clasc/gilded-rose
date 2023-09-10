@@ -52,19 +52,22 @@ func UpdateItems(items []*Item) {
 }
 
 func (item *Item) process() {
+	item.updateQuality()
+	item.updateSellin()
+}
+
+func (item *Item) updateQuality() {
 	if item.Name != AGED_BRIE && item.Name != BACKSTAGE {
 		if item.Quality > 0 {
 			if item.Name != SULFURAS {
 				item.Quality = item.Quality - 1
 			}
 		}
-	} else {
-		increaseQuality(item)
+		return
 	}
+	increaseQuality(item)
 
-	item.updateSellin()
 }
-
 func (item *Item) updateSellin() {
 	if item.Name != SULFURAS {
 		item.SellIn = item.SellIn - 1
