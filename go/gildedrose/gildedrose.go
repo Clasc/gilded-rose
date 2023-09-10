@@ -10,23 +10,6 @@ type Item struct {
 	SellIn, Quality int
 }
 
-type Calculatable interface {
-	getNewQuality() int
-	updateSellin()
-}
-
-type Sulfuras struct {
-	Item
-}
-
-type AgedBrie struct {
-	Item
-}
-
-type Backstage struct {
-	Item
-}
-
 // func calculatable(item *Item) Calculatable {
 // 	switch item.Name {
 // 	case BACKSTAGE:
@@ -64,17 +47,13 @@ func (item *Item) updateQuality() {
 
 	switch item.Name {
 	case AGED_BRIE:
-		item.Quality += 1
+		agedBrieQuality(item)
 	case BACKSTAGE:
 		backastageQuality(item)
 	case SULFURAS:
 		return
 	default:
-		{
-			if item.Quality > 0 {
-				item.Quality -= 1
-			}
-		}
+		defaultItemQuality(item)
 	}
 }
 
@@ -112,5 +91,15 @@ func backastageQuality(item *Item) {
 
 	if item.SellIn < 6 && item.Quality < MAX_QUALITY {
 		item.Quality += 1
+	}
+}
+
+func agedBrieQuality(item *Item) {
+	item.Quality += 1
+}
+
+func defaultItemQuality(item *Item) {
+	if item.Quality > 0 {
+		item.Quality -= 1
 	}
 }
