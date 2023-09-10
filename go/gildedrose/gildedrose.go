@@ -57,8 +57,17 @@ func (item *Item) process() {
 }
 
 func (item *Item) updateQuality() {
-	if item.Name == AGED_BRIE || item.Name == BACKSTAGE {
-		increaseQuality(item)
+	if item.Quality >= 50 {
+		return
+	}
+
+	if item.Name == AGED_BRIE {
+		item.Quality += 1
+		return
+	}
+
+	if item.Name == BACKSTAGE {
+		backastageQuality(item)
 		return
 	}
 	if item.Name == SULFURAS {
@@ -94,22 +103,18 @@ func (item *Item) updateSellin() {
 	}
 }
 
-func increaseQuality(item *Item) {
-	if item.Quality >= 50 {
-		return
+func backastageQuality(item *Item) {
+	item.Quality += 1
+	if item.SellIn < 11 {
+		if item.Quality < 50 {
+			item.Quality += 1
+		}
 	}
 
-	item.Quality += 1
-	if item.Name == BACKSTAGE {
-		if item.SellIn < 11 {
-			if item.Quality < 50 {
-				item.Quality += 1
-			}
-		}
-		if item.SellIn < 6 {
-			if item.Quality < 50 {
-				item.Quality += 1
-			}
+	if item.SellIn < 6 {
+		if item.Quality < 50 {
+			item.Quality += 1
 		}
 	}
+
 }
