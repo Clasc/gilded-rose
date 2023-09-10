@@ -3,6 +3,7 @@ package gildedrose
 const SULFURAS = "Sulfuras, Hand of Ragnaros"
 const BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert"
 const AGED_BRIE = "Aged Brie"
+const MAX_QUALITY = 50
 
 type Item struct {
 	Name            string
@@ -57,7 +58,7 @@ func (item *Item) process() {
 }
 
 func (item *Item) updateQuality() {
-	if item.Quality >= 50 {
+	if item.Quality >= MAX_QUALITY {
 		return
 	}
 
@@ -96,7 +97,7 @@ func (item *Item) updateSellin() {
 				item.Quality -= item.Quality
 			}
 		} else {
-			if item.Quality < 50 {
+			if item.Quality < MAX_QUALITY {
 				item.Quality += 1
 			}
 		}
@@ -106,13 +107,13 @@ func (item *Item) updateSellin() {
 func backastageQuality(item *Item) {
 	item.Quality += 1
 	if item.SellIn < 11 {
-		if item.Quality < 50 {
+		if item.Quality < MAX_QUALITY {
 			item.Quality += 1
 		}
 	}
 
 	if item.SellIn < 6 {
-		if item.Quality < 50 {
+		if item.Quality < MAX_QUALITY {
 			item.Quality += 1
 		}
 	}
